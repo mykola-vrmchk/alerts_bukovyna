@@ -5,5 +5,5 @@ from datetime import datetime
 @dataclass
 class ChannelMessage:
     id: str
-    date: datetime
+    datetime: datetime
     text: str
