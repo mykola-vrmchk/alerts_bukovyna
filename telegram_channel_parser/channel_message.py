@@ -4,6 +4,6 @@ from datetime import datetime
 
 @dataclass
 class ChannelMessage:
-    id: str
-    datetime: datetime
-    text: str
+    id: str = None
+    datetime: datetime = None
+    text: str = None
