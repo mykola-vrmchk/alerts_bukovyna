@@ -11,7 +11,7 @@ def alerts_processor():
     return AlertsProcessor()
 
 
-# @pytest.mark.skip(reason="did not have proper mocks and assert")
+@pytest.mark.skip(reason="did not have proper mocks and assert")
 def test_get_new_messages(alerts_processor):
     test_alerts = [
         Message(id="1", text="Test id=1", datetime=datetime.now()),
