@@ -1,16 +1,27 @@
-# This is a sample Python script.
+import logging
+import time
+from random import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from src import ChannelMessagesParser
+from src.alerts_channel_messages_filter import AlertsChannelMessagesFilter
+from src.alerts_processor import AlertsProcessor
+
+logging.basicConfig(level=logging.DEBUG)
+log = logging.getLogger(__name__)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def wait_15_sec():
+    log.info("Sleeping 15 seconds")
+    time.sleep(9.73 + random() * 10)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main():
+    while True:
+        new_messages = ChannelMessagesParser().get_new_messages()
+        alerts_messages = AlertsChannelMessagesFilter().filter_messages(new_messages)
+        AlertsProcessor().process_messages(alerts_messages)
+        wait_15_sec()
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+if __name__ == "__main__":
+    main()
