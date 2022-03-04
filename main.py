@@ -2,9 +2,9 @@ import logging
 import time
 from random import random
 
-from src import ChannelMessagesParser
 from src.alert_messages_filter import AlertMessagesFilter
 from src.alerts_processor import AlertsProcessor
+from src.channel_messages_parser import ChannelMessagesParser
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
