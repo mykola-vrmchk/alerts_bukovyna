@@ -3,9 +3,8 @@ from datetime import datetime
 import pytest
 from bs4 import BeautifulSoup
 
-from telegram_channel_parser import ChannelMessage
-from telegram_channel_parser.channel_message_getter import ChannelMessageGetter
-
+from src.bs_message_getter import BSMessageGetter
+from src.message import Message
 
 message_wrap_tag = "\n".join(
     [
@@ -34,7 +33,7 @@ message_wrap_tag = "\n".join(
 
 @pytest.fixture
 def channel_message_getter():
-    return ChannelMessageGetter()
+    return BSMessageGetter()
 
 
 @pytest.fixture
@@ -45,9 +44,9 @@ def soup_message_wrap_tag():
 def test_if_returns_channel_message_with_properly_parsed_fields(
     channel_message_getter, soup_message_wrap_tag
 ):
-    assert channel_message_getter.get_channel_message(
+    assert channel_message_getter.get_message(
         soup_message_wrap_tag
-    ) == ChannelMessage(
+    ) == Message(
         id="your_Bukovyna/5179",
         datetime=datetime(2022, 3, 4, 6, 1, 49),
         text="ТРИВОГА",

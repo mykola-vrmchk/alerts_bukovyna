@@ -1,6 +1,6 @@
 import pytest
 
-from telegram_channel_parser import ChannelMessagesParser
+from src import ChannelMessagesParser
 
 
 @pytest.fixture

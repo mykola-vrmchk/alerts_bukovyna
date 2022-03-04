@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 @dataclass
-class ChannelMessage:
+class Message:
     id: str = None
     datetime: datetime = None
     text: str = None

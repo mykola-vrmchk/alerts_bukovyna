@@ -2,12 +2,12 @@ from datetime import datetime
 
 from bs4 import Tag
 
-from telegram_channel_parser.channel_message import ChannelMessage
+from src.message import Message
 
 
-class ChannelMessageGetter:
-    def get_channel_message(self, soup_message_wrap_tag: Tag) -> ChannelMessage:
-        return ChannelMessage(
+class BSMessageGetter:
+    def get_message(self, soup_message_wrap_tag: Tag) -> Message:
+        return Message(
             id=self._get_id(soup_message_wrap_tag),
             datetime=self._get_datetime(soup_message_wrap_tag),
             text=self._get_text(soup_message_wrap_tag),
