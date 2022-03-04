@@ -3,7 +3,7 @@ import time
 from random import random
 
 from src import ChannelMessagesParser
-from src.alerts_channel_messages_filter import AlertsChannelMessagesFilter
+from src.alert_messages_filter import AlertMessagesFilter
 from src.alerts_processor import AlertsProcessor
 
 logging.basicConfig(level=logging.DEBUG)
@@ -18,7 +18,7 @@ def wait_15_sec():
 def main():
     while True:
         new_messages = ChannelMessagesParser().get_new_messages()
-        alerts_messages = AlertsChannelMessagesFilter().filter_messages(new_messages)
+        alerts_messages = AlertMessagesFilter().filter_messages(new_messages)
         AlertsProcessor().process_messages(alerts_messages)
         wait_15_sec()
 
