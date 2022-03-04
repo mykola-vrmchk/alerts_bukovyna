@@ -1,5 +1,6 @@
 import logging
 import time
+import traceback
 from random import random
 
 from src.alert_messages_filter import AlertMessagesFilter
@@ -17,10 +18,15 @@ def wait_15_sec():
 
 def main():
     while True:
-        new_messages = ChannelMessagesParser().get_new_messages()
-        alerts_messages = AlertMessagesFilter().filter_messages(new_messages)
-        AlertsProcessor().process_messages(alerts_messages)
-        wait_15_sec()
+        try:
+            new_messages = ChannelMessagesParser().get_new_messages()
+            alerts_messages = AlertMessagesFilter().filter_messages(new_messages)
+            AlertsProcessor().process_messages(alerts_messages)
+            wait_15_sec()
+        except Exception as error:
+
+            log.error(traceback.format_exc())
+            log.error(str(error))
 
 
 if __name__ == "__main__":
