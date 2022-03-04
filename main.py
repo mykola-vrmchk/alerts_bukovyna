@@ -1,4 +1,5 @@
 import logging
+import sys
 import time
 import traceback
 from random import random
@@ -7,7 +8,16 @@ from src.alert_messages_filter import AlertMessagesFilter
 from src.alerts_processor import AlertsProcessor
 from src.channel_messages_parser import ChannelMessagesParser
 
-logging.basicConfig(level=logging.DEBUG)
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler("logfile.log"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+
 log = logging.getLogger(__name__)
 
 
