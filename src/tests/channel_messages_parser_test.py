@@ -1,6 +1,6 @@
 import pytest
 
-from src import ChannelMessagesParser
+from src.channel_messages_parser import ChannelMessagesParser
 
 
 @pytest.fixture
