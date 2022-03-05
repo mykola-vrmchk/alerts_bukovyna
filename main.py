@@ -12,9 +12,7 @@ from src.channel_messages_parser import ChannelMessagesParser
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[
-        logging.StreamHandler(sys.stdout)
-    ]
+    handlers=[logging.StreamHandler(sys.stdout)],
 )
 
 log = logging.getLogger(__name__)
@@ -33,9 +31,8 @@ def main():
             AlertsProcessor().process_messages(alerts_messages)
             wait_15_sec()
         except Exception as error:
-
-            log.error(traceback.format_exc())
             log.error(str(error))
+            wait_15_sec()
 
 
 if __name__ == "__main__":
