@@ -10,10 +10,9 @@ from src.channel_messages_parser import ChannelMessagesParser
 
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
-        logging.FileHandler("logfile.log"),
         logging.StreamHandler(sys.stdout)
     ]
 )
