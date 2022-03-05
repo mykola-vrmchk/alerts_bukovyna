@@ -19,10 +19,12 @@ log = logging.getLogger(__name__)
 class ChannelMessagesParser:
     def __init__(
         self,
-        channel_url=YOUR_BUKOVYNA_URL,
+        channel_url: str = YOUR_BUKOVYNA_URL,
+        timeout: int = 10,
         bs_message_getter: BSMessageGetter = BSMessageGetter(),
     ):
         self._channel_url = channel_url
+        self._timeout = timeout
         self._bs_message_getter = bs_message_getter
 
     def get_new_messages(self) -> List[Message]:
@@ -46,5 +48,7 @@ class ChannelMessagesParser:
 
     def _get_channel_content(self):
         headers = {"User-Agent": UESER_AGENT}
-        response = requests.get(self._channel_url, headers=headers)
+        response = requests.get(
+            self._channel_url, timeout=self._timeout, headers=headers
+        )
         return response.content
