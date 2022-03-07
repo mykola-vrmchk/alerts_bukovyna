@@ -14,7 +14,7 @@ class AlertMessagesFilter:
     def __init__(
         self,
         clue_phrases_for_filtering: List[str] = CLUE_PHRASES_FOR_FILTERING,
-        message_len_limit: int = 350,
+        message_len_limit: int = 200,
     ):
         self._clue_phrases_for_filtering = clue_phrases_for_filtering
         self._message_len_limit = message_len_limit
