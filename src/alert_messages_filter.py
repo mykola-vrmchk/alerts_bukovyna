@@ -23,7 +23,7 @@ class AlertMessagesFilter:
         alert_messages = [
             message for message in messages if self._is_alert_message(message)
         ]
-        log.info(f"Found {len(alert_messages)} messages with clue alert phrases")
+        log.info(f"Found {len(alert_messages)} alert messages")
         return alert_messages
 
     def _is_alert_message(self, message: Message) -> bool:
